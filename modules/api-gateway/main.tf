@@ -1,39 +1,45 @@
-resource "aws_api_gateway_rest_api" "rest_api" {
-  name = var.rest_api_name
+locals {
+  api_config_id_prefix = "mc"
+  api_id               = "demo-id"
+  gateway_id           = "demo-gateway-id"
+  display_name         = "demo-display"
 }
 
-#Creating Resources using Terraform
-resource "aws_api_gateway_resource" "rest_api_resource" {
-  rest_api_id = aws_api_gateway_rest_api.rest_api.id
-  parent_id   = aws_api_gateway_rest_api.rest_api.root_resource_id
-  path_part   = "api"
-  #path_part = "{proxy+}"
+resource "google_api_gateway_api" "api_gw" {
+  provider     = google-beta
+  api_id       = local.api_gateway_container_id
+  project      = var.project_id
+  display_name = local.display_name
 }
 
-#Adding a Method with a Mock Response Integration Using Terraform
-resource "aws_api_gateway_method" "rest_api_get_method" {
-  rest_api_id   = aws_api_gateway_rest_api.rest_api.id
-  resource_id   = aws_api_gateway_resource.rest_api_resource.id
-  http_method   = "ANY"
-  authorization = "NONE"
+resource "google_api_gateway_api_config" "api_cfg" {
+  provider             = google-beta
+  api                  = google_api_gateway_api.api_gw.api_id
+  api_config_id_prefix = local.api_config_id_prefix
+  project              = var.project_id
+  display_name         = local.display_name
+
+  openapi_documents {
+    document {
+      path     = "openapi.yaml"
+      contents = filebase64("openapi.yml")
+    }
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
-resource "aws_api_gateway_integration" "lambda" {
-  rest_api_id = aws_api_gateway_rest_api.rest_api.id
-  resource_id = aws_api_gateway_method.rest_api_get_method.resource_id
-  http_method = aws_api_gateway_method.rest_api_get_method.http_method
-
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = var.lambda_arn
-}
+resource "google_api_gateway_gateway" "gw" {
+  provider = google-beta
+  region   = var.region
+  project  = var.project_id
 
 
-resource "aws_api_gateway_deployment" "apideploy" {
-  depends_on = [
-    aws_api_gateway_integration.lambda
-  ]
+  api_config = google_api_gateway_api_config.api_cfg.id
 
-  rest_api_id = aws_api_gateway_rest_api.rest_api.id
-  stage_name  = "stage"
+  gateway_id   = local.gateway_id
+  display_name = local.display_name
+
+  depends_on = [google_api_gateway_api_config.api_cfg]
 }

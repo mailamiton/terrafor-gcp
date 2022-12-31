@@ -1,0 +1,22 @@
+paths:
+  /api/echo:
+    get:
+        summary: Echo
+        operationId: echo
+        x-google-backend:
+            address: https://project-id.cloudfunctions.net/HandlerEcho
+        responses:
+            200:
+                description: Successful response
+                schema:
+                    type: string
+    options:
+        summary: Echo
+        operationId: echo
+        x-google-backend:
+            address: https://project-id.cloudfunctions.net/HandlerEcho
+        responses:
+    200:
+        description: Successful response
+        schema:
+            type: string
