@@ -1,0 +1,11 @@
+TO grant terraform permission to create resources pls authencate terminal using below command -
+gcloud auth application-default login
+
+terraform Configuration-
+Create a service account with role - roles/serviceusage.serviceUsageAdmin
+ 
+
+terraform Command-
+terraform init
+terraform plan -var-file=env/dev.tfvars
+terraform apply -var-file=env/dev.tfvars

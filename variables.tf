@@ -3,7 +3,15 @@
 ##########################################################
 #                       GCP SETUP                        #
 ##########################################################
-variable "project_id" {}
-variable "region" {}
-variable "zone" {}
+variable "gcp_region" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "gcp_project" {
+  type        = string
+  description = ""
+}
+
 ##########################################################
