@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrddi - Contact Us</title>
+    <link rel="icon" href="assets/images/favicon.ico" />
+    <!-- style start -->
+    <link rel="stylesheet" href="assets/css/foundation.min.css" />
+    <link rel="stylesheet" href="assets/css/foundation-prototype.min.css">
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <!-- style end -->
+</head>
+
+<body>
+    <!-- header start -->
+    <header class="bg-primary fix_header">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell large-12">
+                    <div class="cell large-12">
+                        <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+                            <button class="menu-icon" type="button" data-toggle></button>
+                            <div class="title-bar-title">
+                                <div class="title-bar-title">
+                                    <a href="index.html"><img src="assets/images/logo.jpg" alt="Logo" class="main-logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-bar" id="example-animated-menu">
+                            <div class="top-bar-left">
+                                <ul class="dropdown menu" data-dropdown-menu>
+                                    <li class="menu-text padding-0 d-hide">
+                                        <div class="title-bar-title">
+                                            <a href="index.html" class="p-0">
+                                                <img src="assets/images/logo.jpg" alt="Logo" class="main-logo" />
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="ml-auto"><a  href="index.html">Home</a></li>
+                                    <li><a href="team.html">Our Team</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a  class="active" href="contact-us.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- header end -->
+
+    <section class="info_section my-team bg-secondary  padding-top-3 padding-bottom-3 mt-53 header-top-space">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell large-12 text-center">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+            <div class="grid-x margin-top-3 justify-content-center">
+                <div class="cell large-6 mb-md-4 padding-left-1 padding-right-1">
+                    <h6 class="fields-marked">Fields marked with * are mandatory.</h6>
+                    <form method="post" id="contactformsubmit">
+                        <div class="form-control">
+                            <label>Name*</label><input type="text" name="name" class="dark-input"
+                                placeholder="Please type your full name." pattern="[a-z A-Z]+" required>
+                        </div>
+                        <div class="form-control">
+                            <label>Email*</label><input type="email" name="email" class="dark-input"
+                                placeholder="Please type your email address." required>
+                        </div>
+                        <div class="form-control">
+                            <label>Phone Number*</label><input type="text" name="phonenumber" class="dark-input"
+                                placeholder="Please type your 10 digit phone number." required
+                                pattern="[1-9]{1}[0-9]{9}">
+                        </div>
+                        <div class="form-control">
+                            <label>Message*</label>
+                            <textarea class="dark-input" name="message" rows="4" placeholder="Please type your message here." required></textarea>
+                        </div>
+                        <div class="form-control margin-bottom-1">
+                            <label>Is employee wellness your priority?*</label>
+                            <input type="radio" name="employeewellness" value="Yes" id="priorityyess" required><label
+                                for="priorityyess">Yes</label>
+                            <input type="radio" name="employeewellness" value="No" id="priority_no"><label
+                                for="priority_no">No</label>
+                        </div>
+                        <div class="form-control">
+                            <label>How many employees does your company have?*</label>
+                            <input type="text" name="employeescount" class="dark-input" placeholder="Please type the total number of employees." pattern="[0-9]+" required>
+                        </div>
+                        <div class="form-control margin-bottom-1">
+                            <label>Do you have a loan or a salary advance policy?*</label>
+                            <input type="radio" name="loanorsalarypolicy" value="Yes" id="salary_yes" required><label
+                                for="salary_yes">Yes</label>
+                            <input type="radio" name="loanorsalarypolicy" value="No" id="salary_no"><label
+                                for="salary_no">No</label>
+                        </div>
+                        <div class="form-control margin-bottom-1">
+                            <label>Do you want to request for an Employee Wellness Audit?*</label>
+                            <input type="radio" name="employeewellnessaudit" value="Yes" id="request_yes" required><label
+                                for="request_yes">Yes</label>
+                            <input type="radio" name="employeewellnessaudit" value="No" id="request_no"><label
+                                for="request_no">No</label>
+                        </div>
+                        <div class="form-control">
+                            <div class="send-btn">
+                                <button type="submit" class="dark_button_hover">Send</button>
+                                <div class="loader-05" id="loader" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="cell large-6 mb-md-4 padding-left-1 padding-right-1">
+                    <div class="box-frame-shedo">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d737.1063045325037!2d77.41009437400037!3d28.500974153581218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce44938840001%3A0x386421683bfcbaf!2sAdvant%20Navis%20Business%20Park!5e0!3m2!1sen!2sin!4v1651750979720!5m2!1sen!2sin"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer start -->
+    <footer class="bg-secondary bg-primary-footer padding-top-3 padding-bottom-3">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell large-3 medium-6 mb-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled margin-0 footer_links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact-us.html">Contact Us</a>
+                    </ul>
+                </div>
+                <div class="cell large-3 medium-6 mb-md-4">
+                    <h5>Address</h5>
+                    <p>B609, Advant Navis Business Park,</p>
+                    <p>Sector 142, Noida,</p>
+                    <p>Uttar Pradesh, 201305</p>
+                </div>
+                <div class="cell large-3 medium-6 mb-md-4 footer_links">
+                    <h5>Contact Us</h5>
+                    <p>Email : <a href="mailto:contactus@vrddi.com">contactus@vrddi.com</a></p>
+                    <p>Phone : <a href="tel:8595177734">+91-8595177734</a></p>
+                </div>
+                <div class="cell large-3  medium-6 mb-md-4">
+                    <div class="max-100"><a href="index.html" class="p-0"><img src="assets/images/white_logo.png" alt="dark-logo"></a> </div>
+                    <h5 class="margin-top-1">Follow Us</h5>
+                    <ul class="list-unstyled d-inline margin-0">
+                        <li><a href="https://www.linkedin.com/company/vrddiefw/about/?viewAsMember=true"><img
+                                    src="assets/images/white-SocialiconLinkedIn.png" alt="SocialiconLinkedIn.png"></a></li>
+                        <li><a href="https://www.facebook.com/Vrddi-112425441450974/"><img
+                                    src="assets/images/white-SocialiconFB.png" alt="SocialiconFB"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCRJYdCd-dOjZKqKOoz69-0Q?reload=9"><img
+                                    src="assets/images/white-SocialiconYoutube.png" alt="SocialiconYoutube"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container border-top-1 padding-top-2 margin-top-2 footer-bottom">
+            <div class="grid-x">
+                <div class="cell large-12 text-center">
+                    All Rights Reserved @ 2022 Vrddi
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- script start -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/foundation.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>$(document).foundation();</script>
+    <script>
+        jQuery("#contactformsubmit").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            jQuery("#loader").css('display', 'inline-block');
+            var form = jQuery(this);
+            var actionUrl = form.attr('action');
+
+            jQuery.ajax({
+                type: "POST",
+                // url: 'https://ycp1mbm4zc.execute-api.ap-south-1.amazonaws.com/Development/vrddicontactusdata',
+                url: 'https://webapi.vrddi.com/vrddicontactusdata',
+                data: form.serialize(), // serializes the form's elements.
+                dataType: "json",
+                success: function(data)
+                {
+                    jQuery("#loader").hide();
+                    jQuery("#contactformsubmit")[0].reset();
+                    const obj = JSON.parse(data);
+                    alert(obj.status);
+                },
+                error: function (data) {
+                    console.log(data)
+                    alert('Something Went Wrong, Please Try Again.');
+                    jQuery("#loader").hide();
+                }
+            });
+        });
+    </script>
+    <!-- script end -->
+</body>
+
+</html>

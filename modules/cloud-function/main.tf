@@ -1,12 +1,26 @@
 # Generates an archive of the source code compressed as a .zip file.
+# data "archive_file" "source" {
+#   type = "zip"
+#   source_dir  = "${path.module}/hello-function/src"
+#   output_path = "/tmp/function.zip"
+# }
+
+
+# locals {
+#   function_name         = "hello_funtion"
+#   function_runtime      = "python37"
+#   function_bucket_store = "mc-function-store"
+# }
+#login cloud function
 data "archive_file" "source" {
   type        = "zip"
-  source_dir  = "${path.module}/hello-function/src"
+  source_dir  = "${path.module}/vriddhi/login/src"
   output_path = "/tmp/function.zip"
 }
 
+
 locals {
-  function_name         = "hello_funtion"
+  function_name         = "login_funtion"
   function_runtime      = "python37"
   function_bucket_store = "mc-function-store"
 }

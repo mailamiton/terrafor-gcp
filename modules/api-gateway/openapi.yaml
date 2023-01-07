@@ -17,3 +17,12 @@ paths:
       responses:
         '200':
           description: OK
+  /v1/login:
+    get:
+      summary: login Service
+      operationId: login-v1
+      x-google-backend:
+        address: https://asia-south1-development-369707.cloudfunctions.net/login_funtion
+      responses:
+        '200':
+          description: OK

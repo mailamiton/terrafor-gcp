@@ -24,3 +24,11 @@ module "my_secrect_manager" {
   gcp_region  = var.gcp_region
 }
 #####################Secret manager #################
+
+#####################Cloud Storage #################
+module "my_cloud_manager" {
+  source      = "./modules/cloud-storage"
+  gcp_project = var.gcp_project
+  gcp_region  = var.gcp_region
+}
+#####################Cloud Storage #################
