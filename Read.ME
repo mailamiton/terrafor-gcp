@@ -9,3 +9,16 @@ terraform Command-
 terraform init
 terraform plan -var-file=env/dev.tfvars
 terraform apply -var-file=env/dev.tfvars
+
+For Error -
+error: The gcp auth plugin has been removed.
+Please use the "gke-gcloud-auth-plugin" kubectl/client-go credential plugin instead.
+See https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke for further details
+Use -
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+
+Reference -
+Kubernates - 
+https://www.youtube.com/watch?v=X_IK0GBbBTw
+https://antonputra.com/google/create-gke-cluster-using-terraform/#create-vpc-in-gcp-using-terraform

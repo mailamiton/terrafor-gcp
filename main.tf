@@ -32,3 +32,21 @@ module "my_cloud_manager" {
   gcp_region  = var.gcp_region
 }
 #####################Cloud Storage #################
+
+#####################VPC #################
+module "my_cloud_vpc" {
+  source      = "./modules/vpc"
+  gcp_project = var.gcp_project
+  gcp_region  = var.gcp_region
+}
+#####################VPC #################
+
+#################Kubernates #################
+module "my_kubernates" {
+  source          = "./modules/kubernates"
+  gcp_project     = var.gcp_project
+  gcp_region      = var.gcp_region
+  vpc_network     = module.my_cloud_vpc.vpc_network
+  sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
+}
+#################Kubernates #################
