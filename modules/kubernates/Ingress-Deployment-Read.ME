@@ -1,0 +1,17 @@
+install heml using below link -
+https://helm.sh/docs/intro/install/
+
+
+Add Helm - 
+helm repo add ingress-nginx \
+  https://kubernetes.github.io/ingress-nginx
+
+update repo -
+helm repo update
+
+Install ingress using heml chart using nginx-value.yaml file -
+helm install my-ing ingress-nginx/ingress-nginx \
+  --namespace ingress \
+  --version 4.0.17 \
+  --values nginx-values.yaml \
+  --create-namespace

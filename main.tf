@@ -41,12 +41,12 @@ module "my_cloud_vpc" {
 }
 #####################VPC #################
 
-#################Kubernates #################
-module "my_kubernates" {
-  source          = "./modules/kubernates"
-  gcp_project     = var.gcp_project
-  gcp_region      = var.gcp_region
-  vpc_network     = module.my_cloud_vpc.vpc_network
-  sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
-}
-#################Kubernates #################
+# #################Kubernates #################
+# module "my_kubernates" {
+#   source          = "./modules/kubernates"
+#   gcp_project     = var.gcp_project
+#   gcp_region      = var.gcp_region
+#   vpc_network     = module.my_cloud_vpc.vpc_network
+#   sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
+# }
+# #################Kubernates #################

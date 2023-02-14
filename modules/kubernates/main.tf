@@ -7,6 +7,36 @@ resource "google_service_account" "kubernetes" {
   account_id = "kubernetes"
 }
 
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account
+resource "google_service_account" "service-a" {
+  account_id = "service-a"
+}
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam
+resource "google_project_iam_member" "member-role" {
+  for_each = toset([
+    "roles/cloudsql.admin",
+    "roles/secretmanager.secretAccessor",
+    "roles/datastore.owner",
+    "roles/storage.admin",
+    "roles/containerregistry.ServiceAgent",
+
+  ])
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.service-a.email}"
+  project = var.gcp_project
+}
+
+#workload identity to access GCP services
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account_iam
+resource "google_service_account_iam_member" "service-a" {
+  service_account_id = google_service_account.service-a.id
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${var.gcp_project}.svc.id.goog[${local.kubernates_namespace}/service-a]"
+}
+
+
+
 
 #Local  naming convention used by resources
 locals {
@@ -20,7 +50,7 @@ locals {
   node_group_spot_vm_type    = "e2-small"
   node_group_spot_vm_tag     = "spot-vm"
   workload_identity_config   = "development-369707.svc.id.goog"
-
+  kubernates_namespace       = "vrddi"
 
 }
 
@@ -105,7 +135,11 @@ resource "google_container_node_pool" "general" {
 
     service_account = google_service_account.kubernetes.email
     oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/servicecontrol",
+      "https://www.googleapis.com/auth/service.management.readonly",
+      "https://www.googleapis.com/auth/trace.append"
     ]
   }
 }
@@ -140,7 +174,11 @@ resource "google_container_node_pool" "spot" {
 
     service_account = google_service_account.kubernetes.email
     oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/servicecontrol",
+      "https://www.googleapis.com/auth/service.management.readonly",
+      "https://www.googleapis.com/auth/trace.append"
     ]
   }
 }

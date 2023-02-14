@@ -14,8 +14,9 @@ For Error -
 error: The gcp auth plugin has been removed.
 Please use the "gke-gcloud-auth-plugin" kubectl/client-go credential plugin instead.
 See https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke for further details
-Use -
+Use export and then credential of cluster-
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+gcloud container clusters get-credentials demo-cluster --zone asia-south1-a --project development-369707
 
 
 Reference -
