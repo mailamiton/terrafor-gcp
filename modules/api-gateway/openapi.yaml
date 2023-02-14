@@ -8,21 +8,21 @@ schemes:
 produces:
   - application/json
 paths:
-  /v1/hello:
-    get:
-      summary: Hi Service
-      operationId: hello-v1
+  # /v1/hello:
+  #   get:
+  #     summary: Hi Service
+  #     operationId: hello-v1
+  #     x-google-backend:
+  #       address: https://asia-south1-development-369707.cloudfunctions.net/hello_funtion
+  #     responses:
+  #       '200':
+  #         description: OK
+  /v1/user_login:
+    post:
+      summary: user login.
+      operationId: user_login-v1
       x-google-backend:
-        address: https://asia-south1-development-369707.cloudfunctions.net/hello_funtion
-      responses:
-        '200':
-          description: OK
-  /v1/login:
-    get:
-      summary: login Service
-      operationId: login-v1
-      x-google-backend:
-        address: https://asia-south1-development-369707.cloudfunctions.net/login_funtion
+        address: https://asia-south1-development-369707.cloudfunctions.net/user_login_function
       responses:
         '200':
           description: OK

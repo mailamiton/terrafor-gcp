@@ -50,3 +50,18 @@ module "my_cloud_vpc" {
 #   sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
 # }
 # #################Kubernates #################
+
+
+#################Cloud SQL#################
+module "cloud_sql" {
+  source            = "./modules/cloud-sql-public"
+  gcp_project       = var.gcp_project
+  gcp_region        = var.gcp_region
+  instance_name     = var.instance_name
+  database_version  = var.database_version
+  machine_type      = var.machine_type
+  database_name     = var.database_name
+  database_user     = var.database_user
+  database_password = var.database_password
+}
+#################Cloud SQL#################

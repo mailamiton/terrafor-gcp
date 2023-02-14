@@ -14,14 +14,14 @@
 #login cloud function
 data "archive_file" "source" {
   type        = "zip"
-  source_dir  = "${path.module}/vriddhi/login/src"
-  output_path = "/tmp/function.zip"
+  source_dir  = "${path.module}/vriddhi/user_login/src"
+  output_path = "/tmp/user_login_function.zip"
 }
 
 
 locals {
-  function_name         = "login_funtion"
-  function_runtime      = "python37"
+  function_name         = "user_login_function"
+  function_runtime      = "python39"
   function_bucket_store = "mc-function-store"
 }
 
@@ -48,7 +48,7 @@ resource "google_cloudfunctions_function" "function" {
   source_archive_object = google_storage_bucket_object.zip.name
 
   # Must match the function name in the cloud function `main.py` source code
-  entry_point = "hello_get"
+  entry_point = "user_login"
 
   available_memory_mb = 128
   trigger_http        = true

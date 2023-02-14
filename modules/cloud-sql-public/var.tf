@@ -1,8 +1,3 @@
-##########################################################
-#                      BOILERPLATE                       #
-##########################################################
-#                       GCP SETUP                        #
-##########################################################
 variable "gcp_region" {
   type        = string
   description = ""
@@ -13,9 +8,6 @@ variable "gcp_project" {
   type        = string
   description = ""
 }
-
-##########################################################
-#######################Cloud SQL Postgres###################################
 
 variable "instance_name" {
   type        = string
@@ -45,4 +37,3 @@ variable "database_password" {
   type        = string
   description = ""
 }
-#######################Cloud SQL Postgres###################################
