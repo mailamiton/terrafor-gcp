@@ -1,0 +1,24 @@
+Requirements -
+1. Anthos Service Mesh requires at least 8 vCPUs. If the machine type has 4 vCPUs, your cluster must have at least 2 nodes. 
+If the machine type has 8 vCPUs, the cluster only needs 1 node. 
+
+2. Secondry pool range for IPS
+
+3. workload_identity_config - name should be "${data.google_project.project.project_id}.svc.id.goog"
+
+4. installation -
+https://cloud.google.com/service-mesh/v1.16/docs/unified-install/install-dependent-tools#install_required_tools
+
+
+Example - 
+./asmcli validate \
+  --project_id "nw-non-prod-mc-vr" \
+  --cluster_name "demo-cluster" \
+  --cluster_location "asia-south1-a" \
+  --fleet_id "nw-non-prod-mc-vr" \
+  --output_dir asmcli \
+  --enable_all
+
+  ###########################################
+gcp_project = "nw-non-prod-mc-vr"
+gcp_region  = "asia-south1"

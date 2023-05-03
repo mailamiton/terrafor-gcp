@@ -3,14 +3,15 @@
 provider "google" {
   project = var.gcp_project
   region  = var.gcp_region
-  //zone    = var.gcp_zone
 }
 
 
 terraform {
   backend "gcs" {
-    bucket      = "mc-global-st"
-    prefix      = "root/resources.tfsate"
-    credentials = "development-369707-e64f510ac15b.json"
+    bucket = "tf-state-mc-vr"
+    #For Networking
+    #prefix      = "root/resources.tfsate"
+    prefix      = "root/kubestate.tfsate"
+    credentials = "nw-non-prod-mc-vr-d6a2b08a4528.json"
   }
 }

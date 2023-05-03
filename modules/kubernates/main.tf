@@ -44,12 +44,12 @@ locals {
   cluster_zone               = "asia-south1-a"
   cluster_other_zone         = "asia-south1-b"
   node_group_default         = "standard"
-  node_group_default_vm_type = "e2-small"
+  node_group_default_vm_type = "e2-standard-4"
   node_group_default_vm_tag  = "standard"
   node_group_spot            = "spot"
   node_group_spot_vm_type    = "e2-small"
   node_group_spot_vm_tag     = "spot-vm"
-  workload_identity_config   = "development-369707.svc.id.goog"
+  workload_identity_config   = "nw-non-prod-mc-vr.svc.id.goog"
   kubernates_namespace       = "vrddi"
 
 }
@@ -59,7 +59,7 @@ resource "google_container_cluster" "primary" {
   name                     = local.cluster_name
   location                 = local.cluster_zone
   remove_default_node_pool = true
-  initial_node_count       = 1
+  initial_node_count       = 2
   # network                  = google_compute_network.main.self_link
   # subnetwork               = google_compute_subnetwork.private.self_link
   network            = var.vpc_network
@@ -144,41 +144,41 @@ resource "google_container_node_pool" "general" {
   }
 }
 
-resource "google_container_node_pool" "spot" {
-  name    = local.node_group_spot
-  cluster = google_container_cluster.primary.id
+# resource "google_container_node_pool" "spot" {
+#   name    = local.node_group_spot
+#   cluster = google_container_cluster.primary.id
 
-  management {
-    auto_repair  = true
-    auto_upgrade = true
-  }
+#   management {
+#     auto_repair  = true
+#     auto_upgrade = true
+#   }
 
-  autoscaling {
-    min_node_count = 0
-    max_node_count = 3
-  }
+#   autoscaling {
+#     min_node_count = 0
+#     max_node_count = 3
+#   }
 
-  node_config {
-    preemptible  = true
-    machine_type = local.node_group_spot_vm_type
+#   node_config {
+#     preemptible  = true
+#     machine_type = local.node_group_spot_vm_type
 
-    labels = {
-      team = local.node_group_spot_vm_tag
-    }
+#     labels = {
+#       team = local.node_group_spot_vm_tag
+#     }
 
-    taint {
-      key    = "instance_type"
-      value  = "spot"
-      effect = "NO_SCHEDULE"
-    }
+#     taint {
+#       key    = "instance_type"
+#       value  = "spot"
+#       effect = "NO_SCHEDULE"
+#     }
 
-    service_account = google_service_account.kubernetes.email
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/servicecontrol",
-      "https://www.googleapis.com/auth/service.management.readonly",
-      "https://www.googleapis.com/auth/trace.append"
-    ]
-  }
-}
+#     service_account = google_service_account.kubernetes.email
+#     oauth_scopes = [
+#       "https://www.googleapis.com/auth/cloud-platform",
+#       "https://www.googleapis.com/auth/devstorage.read_only",
+#       "https://www.googleapis.com/auth/servicecontrol",
+#       "https://www.googleapis.com/auth/service.management.readonly",
+#       "https://www.googleapis.com/auth/trace.append"
+#     ]
+#   }
+# }
