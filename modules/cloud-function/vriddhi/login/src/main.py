@@ -15,8 +15,8 @@ my_secret_value = response.payload.data.decode("UTF-8")
 secret_object = json.loads(my_secret_value)
 
 ddb = boto3.resource(service_name='dynamodb', region_name='ap-south-1',
-                     aws_access_key_id='AKIA6FOVSXXWLUJAK5PP',
-                     aws_secret_access_key='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')
+                     aws_access_key_id='',
+                     aws_secret_access_key='')
 
 
 @functions_framework.http
