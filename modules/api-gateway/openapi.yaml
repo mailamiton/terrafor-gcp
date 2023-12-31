@@ -8,6 +8,24 @@ schemes:
 produces:
   - application/json
 paths:
+  /v1/helloworld:
+    get:
+      summary: Hi world
+      operationId: helloworld
+      x-google-backend:
+        address: https://asia-south1-development-378505.cloudfunctions.net/hello-world
+      responses:
+        '200':
+          description: OK
+  /v1/helloworld1:
+    get:
+      summary: Hi world1
+      operationId: helloworld1
+      x-google-backend:
+        address: https://asia-south1-development-378505.cloudfunctions.net/hello-world-1
+      responses:
+        '200':
+          description: OK
   # /v1/hello:
   #   get:
   #     summary: Hi Service
@@ -17,12 +35,12 @@ paths:
   #     responses:
   #       '200':
   #         description: OK
-  /v1/user_login:
-    post:
-      summary: user login.
-      operationId: user_login-v1
-      x-google-backend:
-        address: https://asia-south1-development-369707.cloudfunctions.net/user_login_function
-      responses:
-        '200':
-          description: OK
+  # /v1/user_login:
+  #   post:
+  #     summary: user login.
+  #     operationId: user_login-v1
+  #     x-google-backend:
+  #       address: https://asia-south1-development-369707.cloudfunctions.net/user_login_function
+  #     responses:
+  #       '200':
+  #         description: OK

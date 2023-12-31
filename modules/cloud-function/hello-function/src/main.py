@@ -1,20 +1,9 @@
+from flask import escape
+
 import functions_framework
-import os
-from google.cloud import secretmanager
-import sqlalchemy
-import json
-
-project_id = os.environ["PROJECT_ID"]
-
-client = secretmanager.SecretManagerServiceClient()
-name = f"projects/{project_id}/secrets/mcdb-dev-db/versions/latest"
-response = client.access_secret_version(name=name)
-my_secret_value = response.payload.data.decode("UTF-8")
-secret_object = json.loads(my_secret_value)
-
 
 @functions_framework.http
-def hello_get(request):
+def hello_http(request):
     """HTTP Cloud Function.
     Args:
         request (flask.Request): The request object.
@@ -23,10 +12,14 @@ def hello_get(request):
         The response text, or any set of values that can be turned into a
         Response object using `make_response`
         <https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response>.
-    Note:
-        For more information on how Flask integrates with Cloud
-        Functions, see the `Writing HTTP functions` page.
-        <https://cloud.google.com/functions/docs/writing/http#http_frameworks>
     """
-    print("username :::: " + secret_object['username'])
-    return 'Hello World!'
+    request_json = request.get_json(silent=True)
+    request_args = request.args
+
+    if request_json and "name" in request_json:
+        name = request_json["name"]
+    elif request_args and "name" in request_args:
+        name = request_args["name"]
+    else:
+        name = "hello-function"
+    return f"Hello {escape(name)}!"

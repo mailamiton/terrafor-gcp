@@ -22,7 +22,7 @@ data "archive_file" "source" {
 locals {
   function_name         = "user_login_function"
   function_runtime      = "python39"
-  function_bucket_store = "mc-function-store"
+  function_bucket_store = "mc-dev-function-store"
 }
 
 # Add source code zip to the Cloud Function's bucket

@@ -1,5 +1,5 @@
 TO grant terraform permission to create resources pls authencate terminal using below command -
- gcloud auth login 
+ gcloud auth login
 gcloud auth application-default login
 
 #Start terraform Configuration-
@@ -7,7 +7,7 @@ Create a service account with role (while creation)- Storage Admin
 
 Optional -
 gcloud auth activate-service-account terrform-svc@nw-non-prod-mc-vr.iam.gserviceaccount.com --project=nw-non-prod-mc-vr --key-file="nw-non-prod-mc-vr-1e8953801fe8.json"
-
+gcloud auth activate-service-account terrform-service-account@development-378505.iam.gserviceaccount.com --project=mc-infra-state-tf --key-file="development-378505-71e9ce0d91de.json"
 #End terraform Configuration-
 
 terraform Command-

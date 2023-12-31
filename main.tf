@@ -10,11 +10,11 @@ locals {
 # #####################Cloud Function ################
 
 # #####################API gateway ###################
-# module "my_api_gateway" {
-#   source      = "./modules/api-gateway"
-#   gcp_region  = var.gcp_region
-#   gcp_project = var.gcp_project
-# }
+module "my_api_gateway" {
+  source      = "./modules/api-gateway"
+  gcp_region  = var.gcp_region
+  gcp_project = var.gcp_project
+}
 # #####################API gateway ###################
 
 # #####################Secret manager #################
@@ -61,16 +61,16 @@ locals {
 
 
 #################Kubernates #################
-module "my_kubernates" {
-  source          = "./modules/kubernates"
-  gcp_project     = var.gcp_project
-  gcp_region      = var.gcp_region
-  vpc_network     = "vr-mc-vpc"
-  sub_vpc_network = "public-subnet-01"
-  #For VPC Creation from terrform
-  #vpc_network     = module.my_cloud_vpc.vpc_network
-  #sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
-}
+# module "my_kubernates" {
+#   source          = "./modules/kubernates"
+#   gcp_project     = var.gcp_project
+#   gcp_region      = var.gcp_region
+#   vpc_network     = "vr-mc-vpc"
+#   sub_vpc_network = "public-subnet-01"
+#   #For VPC Creation from terrform
+#   #vpc_network     = module.my_cloud_vpc.vpc_network
+#   #sub_vpc_network = module.my_cloud_vpc.sub_vpc_network
+# }
 #################Kubernates #################
 
 

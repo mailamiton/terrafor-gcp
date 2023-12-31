@@ -8,10 +8,10 @@ provider "google" {
 
 terraform {
   backend "gcs" {
-    bucket = "tf-state-mc-vr"
+    bucket = "mc-infra-state-tf"
     #For Networking
     #prefix      = "root/resources.tfsate"
-    prefix      = "root/kubestate.tfsate"
-    credentials = "nw-non-prod-mc-vr-d6a2b08a4528.json"
+    prefix      = "root/resources.tfsate"
+    credentials = "development-378505-71e9ce0d91de.json"
   }
 }

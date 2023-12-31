@@ -1,3 +1,4 @@
 .terraform.lock.hcl
 .terraform/
 development-369707-e64f510ac15b.json
+*.json
