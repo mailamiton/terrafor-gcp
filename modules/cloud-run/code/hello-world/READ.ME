@@ -1,0 +1,16 @@
+1. Create the app with docker file
+2.  configure auth and permission 
+    cloud auth configure asia-south1-pkg.dev
+3 build the app to be able to push to artifact registory
+docker build -t asia-south1-docker.pkg.dev/development-378505/hello-world-python/python-hello-world:v001 .
+4. push the app in artifact registory
+docker push  asia-south1-docker.pkg.dev/development-378505/hello-world-python/python-hello-world:v001
+5.  deploy cloud run app  - was done manuaaly from UI - TODO yet to figure out
+syntax :- gcloud run deploy SERVICE --region REGION  --image IMAGE_URL
+gcloud run deploy python-hello-world --region asia-south1 --image asia-south1-docker.pkg.dev/development-378505/hello-world-python/python-hello-world:v001
+
+
+Note :: - Cloud Run Developer and roles/artifactregistry.createOnPushWriter permission required apart from artifact repo 
+
+
+gcloud iam service-accounts add-iam-policy-binding terrform-service-account@development-378505.iam.gserviceaccount.com --member 508704031997-compute@developer.gserviceaccount.com --role roles/iam.serviceAccountUser

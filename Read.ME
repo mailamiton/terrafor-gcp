@@ -11,7 +11,7 @@ gcloud auth activate-service-account terrform-service-account@development-378505
 #End terraform Configuration-
 
 terraform Command-
-terraform init 
+terraform init
 terraform init -reconfigure
 terraform plan -var-file=env/dev.tfvars
 terraform apply -var-file=env/dev.tfvars
@@ -24,6 +24,9 @@ Use export and then credential of cluster-
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 gcloud container clusters get-credentials demo-cluster --zone asia-south1-a --project development-369707
 
+API Gateway Endpoint -
+ hellowworld cloud function - https://demo-gateway-id-6hp18v7h.an.gateway.dev/v1/helloworld
+ hellowworld cloud run - https://demo-gateway-id-6hp18v7h.an.gateway.dev/v1/hello-world-cloud-run-python
 
 Reference -
 Kubernates - 

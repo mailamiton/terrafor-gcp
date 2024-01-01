@@ -26,6 +26,15 @@ paths:
       responses:
         '200':
           description: OK
+  /v1/hello-world-cloud-run-python:
+    get:
+      summary: python hello world
+      operationId: python hello world
+      x-google-backend:
+        address: https://python-hello-world-agdwubeqwa-el.a.run.app/
+      responses:
+        '200':
+          description: OK
   # /v1/hello:
   #   get:
   #     summary: Hi Service
